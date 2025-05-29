@@ -12,7 +12,6 @@
       padding: 1rem;
       border-radius: var(--pico-border-radius);
       overflow: auto;
-      margin-bottom: 1rem;
     }
 
     .copy-button {
@@ -22,14 +21,6 @@
       font-size: 0.8rem;
       padding: 0.25rem 0.5rem;
       cursor: pointer;
-    }
-
-    nav[role="tablist"] {
-      margin-bottom: 0.5rem;
-    }
-
-    .hidden {
-      display: none;
     }
 
     pre {
@@ -45,43 +36,34 @@
     <!-- Breadcrumb -->
     <nav aria-label="breadcrumb">
       <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/templates">Templates</a></li>
+        <li><a href="{{ '/' | relative_url }}">Home</a></li>
+        <li><a href="{{ '/blogger' | relative_url }}">Blogger</a></li>
         <li aria-current="page">{{ page.title }}</li>
       </ul>
     </nav>
 
-    <!-- Header and Description -->
+    <!-- Header -->
     <header>
       <h1>{{ page.title }}</h1>
       <p>{{ page.description }}</p>
     </header>
 
-    <!-- Code Tabs -->
-    {% include code-tabs.html %}
+    <!-- Single Code Block -->
+    <div class="code-container">
+      <button class="copy-button" onclick="copyCode()">Copy</button>
+      <pre id="code-block"><code>{{ page.code | escape }}</code></pre>
+    </div>
+
   </main>
 
-  <!-- Clipboard Copy Logic -->
   <script>
-    function copyCode(id) {
-      const code = document.getElementById(id).innerText;
+    function copyCode() {
+      const code = document.getElementById('code-block').innerText;
       navigator.clipboard.writeText(code).then(() => {
         alert("Code copied to clipboard!");
       }).catch(err => {
+        console.error("Copy failed", err);
         alert("Failed to copy code");
-        console.error(err);
-      });
-    }
-
-    function showTab(tabName, group) {
-      const tabs = document.querySelectorAll(`.code-tab[data-group='${group}']`);
-      tabs.forEach(tab => {
-        tab.classList.toggle('hidden', tab.dataset.tab !== tabName);
-      });
-
-      const buttons = document.querySelectorAll(`.tab-button[data-group='${group}']`);
-      buttons.forEach(btn => {
-        btn.setAttribute('aria-selected', btn.dataset.tab === tabName);
       });
     }
   </script>
