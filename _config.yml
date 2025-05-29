@@ -1,0 +1,25 @@
+title: "Template Viewer"
+description: "Minimal Jekyll site with PicoCSS"
+baseurl: "/bin"   # Important: matches your subdirectory repo
+url: "https://junlee.github.io"  # Your GitHub Pages username
+
+# Treat blogger as a collection of pages
+collections:
+  blogger:
+    output: true
+
+# Enable Jekyll features
+markdown: kramdown
+theme: null  # Explicitly disable any Jekyll theme
+
+# Include folders that Jekyll might ignore
+include:
+  - _includes
+  - _layouts
+  - blogger
+
+# Ignore unnecessary files
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
