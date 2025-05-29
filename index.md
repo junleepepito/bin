@@ -7,4 +7,4 @@ title: Home
 
 Welcome! Explore the available layout templates:
 
-- [Minima Blogger Template](/blogger/minima)
+- [Minima Blogger Template]({{ "/blogger/minima" | relative_url }})
