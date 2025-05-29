@@ -1,4 +1,4 @@
 # .github/FUNDING.yml
 
-paypal: halangdon               # Your PayPal.me username (not a full URL)
-custom: []                   # Leave empty or remove if not using custom URLs
+custom:
+  - https://www.paypal.me/halangdon
