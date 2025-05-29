@@ -1,0 +1,16 @@
+{% assign group = page.title | slugify %}
+<nav role="tablist">
+  {% for sample in page.code_samples %}
+    <button class="tab-button" data-tab="{{ sample.label }}" data-group="{{ group }}"
+      onclick="showTab('{{ sample.label }}', '{{ group }}')" {% if forloop.first %}aria-selected="true"{% endif %}>
+      {{ sample.label }}
+    </button>
+  {% endfor %}
+</nav>
+
+{% for sample in page.code_samples %}
+  <div class="code-container code-tab {% unless forloop.first %}hidden{% endunless %}" data-tab="{{ sample.label }}" data-group="{{ group }}">
+    <button class="copy-button" onclick="copyCode('code-{{ group }}-{{ forloop.index }}')">Copy</button>
+    <pre id="code-{{ group }}-{{ forloop.index }}"><code>{{ sample.code | escape }}</code></pre>
+  </div>
+{% endfor %}
