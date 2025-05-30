@@ -2,12 +2,15 @@
 layout: bin
 title: tempIndex
 ---
-<h3>&#128451;&#65039; <a href="/bin/blogger">bin/s</a></h3>
-<ul>
-  {% assign blogger_pages = site.pages | where_exp: "p", "p.path contains 'blogger/'" %}
-  {% for page in blogger_pages %}
-    {% unless page.name == "index.html" %}
-      <li>&#128196; <a href="{{ page.url }}">{{ page.title | default: page.path }}</a></li>
-    {% endunless %}
-  {% endfor %}
-</ul>
+
+          <h3>&#128450;&#65039; <a href="/bin">bin/s</a></h3>
+          <h3>&#128451;&#65039; <a href="/bin/blogger">bin/s</a></h3>
+          <!-- Lists-->
+          <ul>
+            {% assign blogger_pages = site.pages | where_exp: "p", "p.path contains 'blogger/'" %}
+            {% for page in blogger_pages %}
+            {% unless page.name == "index.html" %}
+            <li>&#128196; <a href="{{ page.url }}">{{ page.title | default: page.path }}</a></li>
+            {% endunless %}
+            {% endfor %}
+          </ul>
